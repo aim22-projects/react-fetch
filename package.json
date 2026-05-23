@@ -1,7 +1,7 @@
 {
   "name": "react-fetch",
   "version": "0.1.0",
-  "description": "a component library to simplify GET api calls. api",
+  "description": "React and React Native render-prop wrappers for fetching data and resolving promises.",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
   "exports": {
@@ -72,7 +72,9 @@
     "del-cli": "^6.0.0",
     "eslint": "^9.35.0",
     "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-ft-flow": "^3.0.11",
     "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-react-native": "^5.0.0",
     "jest": "^29.7.0",
     "lefthook": "^2.0.3",
     "prettier": "^3.0.0",

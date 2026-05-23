@@ -12,15 +12,40 @@ npm install react-fetch
 
 ## Usage
 
+```tsx
+import { FetchResolver, PromiseResolver } from 'react-fetch';
+import { Text } from 'react-native';
 
-```js
-import { multiply } from 'react-fetch';
+function Example() {
+  return (
+    <>
+      <FetchResolver url={() => 'https://api.example.com/data'}>
+        {(data, pending, error, status, response) => {
+          if (pending) {
+            return <Text>Loading…</Text>;
+          }
+          if (error) {
+            return <Text>Error: {error.message}</Text>;
+          }
+          return <Text>Status: {status}, Data: {JSON.stringify(data)}</Text>;
+        }}
+      </FetchResolver>
 
-// ...
-
-const result = await multiply(3, 7);
+      <PromiseResolver promise={fetch('https://api.example.com/data').then((res) => res.json())}>
+        {(data, pending, error, status) => {
+          if (pending) {
+            return <Text>Waiting for promise…</Text>;
+          }
+          if (error) {
+            return <Text>Error: {error.message}</Text>;
+          }
+          return <Text>Promise result: {JSON.stringify(data)}</Text>;
+        }}
+      </PromiseResolver>
+    </>
+  );
+}
 ```
-
 
 ## Contributing
 
