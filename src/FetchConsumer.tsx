@@ -1,21 +1,47 @@
 import { useEffect, useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
 
+/**
+ * Status of a fetch request
+ * @type FetchStatus
+ * - 'idle': Initial state before fetch starts
+ * - 'pending': Fetch is in progress
+ * - 'success': Fetch completed successfully
+ * - 'error': Fetch failed
+ */
 export type FetchStatus = 'idle' | 'pending' | 'success' | 'error';
 
+/**
+ * Render state passed to FetchConsumer children function
+ * @template T - The type of data being fetched
+ */
 export interface FetchConsumerRenderState<T> {
+  /** The fetched data, or null if not yet loaded */
   data: T | null;
+  /** Whether the fetch is currently pending */
   pending: boolean;
+  /** Any error that occurred during the fetch */
   error: Error | null;
+  /** Current status of the fetch */
   status: FetchStatus;
+  /** The Response object from fetch, or null */
   response: Response | null;
 }
 
+/**
+ * Props for the FetchConsumer component
+ * @template T - The type of data being fetched
+ */
 export interface FetchConsumerProps<T = unknown> {
+  /** The URL to fetch from, or a function that returns a URL */
   url: string | (() => string);
+  /** Optional fetch options (headers, method, body, etc.) */
   init?: RequestInit;
+  /** Optional custom fetch implementation */
   fetcher?: typeof fetch;
+  /** Whether to parse the response as JSON (default: true) */
   parseJson?: boolean;
+  /** Render function that receives the fetch state */
   children: (
     data: T | null,
     pending: boolean,
@@ -25,6 +51,24 @@ export interface FetchConsumerProps<T = unknown> {
   ) => ReactNode;
 }
 
+/**
+ * FetchConsumer - A render-prop component for consuming data from HTTP fetch requests
+ *
+ * @template T - The type of data being fetched
+ * @param props - FetchConsumerProps
+ * @returns ReactNode
+ *
+ * @example
+ * ```tsx
+ * <FetchConsumer url="https://api.example.com/data">
+ *   {(data, pending, error, status, response) => {
+ *     if (pending) return <Text>Loading…</Text>;
+ *     if (error) return <Text>Error: {error.message}</Text>;
+ *     return <Text>{JSON.stringify(data)}</Text>;
+ *   }}
+ * </FetchConsumer>
+ * ```
+ */
 export function FetchConsumer<T = unknown>(
   props: FetchConsumerProps<T>
 ): ReactNode {

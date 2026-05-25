@@ -7,6 +7,9 @@ export type {
 export { default as PromiseConsumer } from './PromiseConsumer';
 export type { PromiseConsumerProps } from './PromiseConsumer';
 
+export { default as EventStreamConsumer } from './EventStreamConsumer';
+export type { EventStreamConsumerProps } from './EventStreamConsumer';
+
 // Aliases for backward compatibility
 export { default as FetchResolver } from './FetchConsumer';
 export type {
