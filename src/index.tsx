@@ -1,11 +1,21 @@
-export { default as FetchResolver } from './FetchResolver';
+export { default as FetchConsumer } from './FetchConsumer';
 export type {
-  FetchResolverProps,
-  FetchResolverRenderState,
-} from './FetchResolver';
+  FetchConsumerProps,
+  FetchConsumerRenderState,
+} from './FetchConsumer';
 
-export { default as PromiseResolver } from './PromiseResolver';
-export type { PromiseResolverProps } from './PromiseResolver';
+export { default as PromiseConsumer } from './PromiseConsumer';
+export type { PromiseConsumerProps } from './PromiseConsumer';
 
-export { default as Fetch } from './FetchResolver';
-export { default as WithPromise } from './PromiseResolver';
+// Aliases for backward compatibility
+export { default as FetchResolver } from './FetchConsumer';
+export type {
+  FetchConsumerProps as FetchResolverProps,
+  FetchConsumerRenderState as FetchResolverRenderState,
+} from './FetchConsumer';
+
+export { default as PromiseResolver } from './PromiseConsumer';
+export type { PromiseConsumerProps as PromiseResolverProps } from './PromiseConsumer';
+
+export { default as Fetch } from './FetchConsumer';
+export { default as WithPromise } from './PromiseConsumer';

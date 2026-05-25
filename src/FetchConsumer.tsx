@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 
 export type FetchStatus = 'idle' | 'pending' | 'success' | 'error';
 
-export interface FetchResolverRenderState<T> {
+export interface FetchConsumerRenderState<T> {
   data: T | null;
   pending: boolean;
   error: Error | null;
@@ -11,7 +11,7 @@ export interface FetchResolverRenderState<T> {
   response: Response | null;
 }
 
-export interface FetchResolverProps<T = unknown> {
+export interface FetchConsumerProps<T = unknown> {
   url: string | (() => string);
   init?: RequestInit;
   fetcher?: typeof fetch;
@@ -25,8 +25,8 @@ export interface FetchResolverProps<T = unknown> {
   ) => ReactNode;
 }
 
-export function FetchResolver<T = unknown>(
-  props: FetchResolverProps<T>
+export function FetchConsumer<T = unknown>(
+  props: FetchConsumerProps<T>
 ): ReactNode {
   const { url, init, fetcher, parseJson = true, children } = props;
   const resolvedUrl = useMemo(
@@ -120,4 +120,4 @@ export function FetchResolver<T = unknown>(
   return children(data, status === 'pending', error, status, response);
 }
 
-export default FetchResolver;
+export default FetchConsumer;

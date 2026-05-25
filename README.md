@@ -1,23 +1,23 @@
-# react-fetch
+# react-consumer
 
-a component library to simplify GET api calls. api
+a component library to consume async data and promises. 
 
 ## Installation
 
 ```sh
-npm install react-fetch
+npm install react-consumer
 ```
 
 ## Usage
 
 ```tsx
-import { FetchResolver, PromiseResolver } from 'react-fetch';
+import { FetchConsumer, PromiseConsumer } from 'react-consumer';
 import { Text } from 'react-native';
 
 function Example() {
   return (
     <>
-      <FetchResolver url={() => 'https://api.example.com/data'}>
+      <FetchConsumer url={() => 'https://api.example.com/data'}>
         {(data, pending, error, status, response) => {
           if (pending) {
             return <Text>Loading…</Text>;
@@ -31,9 +31,9 @@ function Example() {
             </Text>
           );
         }}
-      </FetchResolver>
+      </FetchConsumer>
 
-      <PromiseResolver
+      <PromiseConsumer
         promise={fetch('https://api.example.com/data').then((res) =>
           res.json()
         )}
@@ -47,7 +47,7 @@ function Example() {
           }
           return <Text>Promise result: {JSON.stringify(data)}</Text>;
         }}
-      </PromiseResolver>
+      </PromiseConsumer>
     </>
   );
 }
@@ -55,26 +55,28 @@ function Example() {
 
 ## API
 
-- **FetchResolver**: a render-prop component that accepts `url`, optional `init`, optional `fetcher`, and `parseJson`.
+- **FetchConsumer**: a render-prop component that accepts `url`, optional `init`, optional `fetcher`, and `parseJson`.
   - children signature: `(data, pending, error, status, response) => ReactNode`.
 
-- **PromiseResolver**: a render-prop component that accepts a `promise` or `() => Promise<T>`.
+- **PromiseConsumer**: a render-prop component that accepts a `promise` or `() => Promise<T>`.
   - children signature: `(data, pending, error, status) => ReactNode`.
 
 Both components also have backward-compatible aliases exported:
 
-- `Fetch` → alias for `FetchResolver`.
-- `WithPromise` → alias for `PromiseResolver`.
+- `FetchResolver` → alias for `FetchConsumer`.
+- `PromiseResolver` → alias for `PromiseConsumer`.
+- `Fetch` → alias for `FetchConsumer`.
+- `WithPromise` → alias for `PromiseConsumer`.
 
 ## Importing only what you need
 
 Import the named exports from the package root to allow bundlers to tree-shake unused code:
 
 ```js
-import { FetchResolver } from 'react-fetch';
+import { FetchConsumer } from 'react-consumer';
 ```
 
-Avoid deep/relative imports into package internals (for example, `react-fetch/src/FetchResolver`), as those import paths are not part of the public package contract and may not be supported by the published package. Rely on named exports from the package root for a stable public API.
+Avoid deep/relative imports into package internals (for example, `react-consumer/src/FetchConsumer`), as those import paths are not part of the public package contract and may not be supported by the published package. Rely on named exports from the package root for a stable public API.
 
 ## Contributing
 

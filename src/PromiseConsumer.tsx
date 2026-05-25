@@ -3,7 +3,7 @@ import type { ReactNode } from 'react';
 
 export type FetchStatus = 'idle' | 'pending' | 'success' | 'error';
 
-export interface PromiseResolverProps<T = unknown> {
+export interface PromiseConsumerProps<T = unknown> {
   promise: Promise<T> | (() => Promise<T>);
   children: (
     data: T | null,
@@ -13,8 +13,8 @@ export interface PromiseResolverProps<T = unknown> {
   ) => ReactNode;
 }
 
-export function PromiseResolver<T = unknown>(
-  props: PromiseResolverProps<T>
+export function PromiseConsumer<T = unknown>(
+  props: PromiseConsumerProps<T>
 ): ReactNode {
   const { promise, children } = props;
   const resolvedPromise = useMemo(
@@ -61,4 +61,4 @@ export function PromiseResolver<T = unknown>(
   return children(data, status === 'pending', error, status);
 }
 
-export default PromiseResolver;
+export default PromiseConsumer;

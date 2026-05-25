@@ -1,7 +1,7 @@
 {
-  "name": "react-fetch",
+  "name": "react-consumer",
   "version": "0.1.0",
-  "description": "React and React Native render-prop wrappers for fetching data and resolving promises.",
+  "description": "React and React Native render-prop wrappers for consuming async data and promises.",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
   "exports": {
@@ -32,7 +32,7 @@
     "!**/.*"
   ],
   "scripts": {
-    "example": "yarn workspace react-fetch-example",
+    "example": "npm --workspace=react-consumer-example",
     "clean": "del-cli lib",
     "prepare": "bob build",
     "typecheck": "tsc",
@@ -92,7 +92,7 @@
   "workspaces": [
     "example"
   ],
-  "packageManager": "yarn@4.11.0",
+  "packageManager": "npm@10.0.0",
   "react-native-builder-bob": {
     "source": "src",
     "output": "lib",
