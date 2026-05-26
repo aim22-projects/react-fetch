@@ -97,10 +97,11 @@ export function EventStreamConsumer<T = unknown>(
         setError(null);
 
         let payload: T | null = null;
+        const anyEvent = event as unknown as Record<string, unknown>;
 
         // Handle MessageEvent (from WebSocket, Worker, etc.)
-        if (typeof (event as Record<string, unknown>).data !== 'undefined') {
-          const eventData = (event as Record<string, unknown>).data;
+        if (typeof anyEvent.data !== 'undefined') {
+          const eventData = anyEvent.data;
           if (parseJson && typeof eventData === 'string') {
             payload = JSON.parse(eventData) as T;
           } else {
@@ -108,10 +109,8 @@ export function EventStreamConsumer<T = unknown>(
           }
         }
         // Handle CustomEvent (from dispatchEvent with detail)
-        else if (
-          typeof (event as Record<string, unknown>).detail !== 'undefined'
-        ) {
-          const detail = (event as Record<string, unknown>).detail;
+        else if (typeof anyEvent.detail !== 'undefined') {
+          const detail = anyEvent.detail;
           if (parseJson && typeof detail === 'string') {
             payload = JSON.parse(detail) as T;
           } else {
@@ -142,7 +141,8 @@ export function EventStreamConsumer<T = unknown>(
         return;
       }
 
-      const message = (event as Record<string, unknown>).message;
+      const anyEvent = event as unknown as Record<string, unknown>;
+      const message = anyEvent.message;
       const nextError = new Error(
         typeof message === 'string'
           ? message
