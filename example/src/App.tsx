@@ -1,5 +1,5 @@
 import { Text, View, StyleSheet, ScrollView } from 'react-native';
-import { FetchConsumer, PromiseConsumer } from 'react-fetch';
+import { FetchConsumer, PromiseConsumer } from 'react-consumer';
 
 const todoUrl = 'https://jsonplaceholder.typicode.com/todos/1';
 const postPromise = fetch('https://jsonplaceholder.typicode.com/posts/1').then(
@@ -14,7 +14,7 @@ export default function App() {
       <View style={styles.card}>
         <Text style={styles.title}>FetchConsumer</Text>
         <FetchConsumer url={() => todoUrl}>
-          {(data, pending, error, status) => {
+          {(data: any, pending: boolean, error: any, status: string) => {
             if (pending) {
               return <Text>Loading todo…</Text>;
             }
@@ -33,7 +33,7 @@ export default function App() {
       <View style={styles.card}>
         <Text style={styles.title}>PromiseConsumer</Text>
         <PromiseConsumer promise={postPromise}>
-          {(data, pending, error, status) => {
+          {(data: any, pending: boolean, error: any, status: string) => {
             if (pending) {
               return <Text>Resolving promise…</Text>;
             }
