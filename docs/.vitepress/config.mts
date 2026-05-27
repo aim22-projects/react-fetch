@@ -4,7 +4,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "React Consumer",
   description: "React and React Native async data render-prop wrappers.",
-  base: '/react-fetch/',
+  base: '/react-consumer/',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
@@ -24,7 +24,7 @@ export default defineConfig({
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/aim22-projects/react-fetch' }
+      { icon: 'github', link: 'https://github.com/aim22-projects/react-consumer' }
     ]
   }
 })

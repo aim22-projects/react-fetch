@@ -15,7 +15,7 @@ hero:
       link: /components/fetch-consumer
     - theme: alt
       text: GitHub
-      link: https://github.com/aim22-projects/react-fetch
+      link: https://github.com/aim22-projects/react-consumer
 
 features:
   - title: 🌐 Declarative HTTP Fetch

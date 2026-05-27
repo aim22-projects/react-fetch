@@ -39,14 +39,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aim22-projects/react-fetch.git"
+    "url": "git+https://github.com/aim22-projects/react-consumer.git"
   },
   "author": "aasirmutwalli22 <aasirmutwalli22@gmail.com> (https://github.com/aim22-projects)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/aim22-projects/react-fetch/issues"
+    "url": "https://github.com/aim22-projects/react-consumer/issues"
   },
-  "homepage": "https://github.com/aim22-projects/react-fetch#readme",
+  "homepage": "https://github.com/aim22-projects/react-consumer#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
