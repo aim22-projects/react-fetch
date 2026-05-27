@@ -1,0 +1,26 @@
+{
+  "name": "react-consumer-web-example",
+  "version": "1.0.0",
+  "private": true,
+  "main": "src/App.tsx",
+  "scripts": {
+    "start": "webpack serve --mode development --open",
+    "build": "webpack --mode production"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-consumer": "*"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "webpack": "^5.0.0",
+    "webpack-cli": "^5.0.0",
+    "webpack-dev-server": "^4.0.0",
+    "ts-loader": "^9.0.0",
+    "react-native-builder-bob": "^0.40.13",
+    "react-native-monorepo-config": "^0.3.3"
+  }
+}

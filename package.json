@@ -82,7 +82,8 @@
     "react-native": "*"
   },
   "workspaces": [
-    "example"
+    "example-web",
+    "example-expo"
   ],
   "packageManager": "npm@10.0.0",
   "react-native-builder-bob": {
@@ -113,7 +114,8 @@
   "jest": {
     "preset": "react-native",
     "modulePathIgnorePatterns": [
-      "<rootDir>/example/node_modules",
+      "<rootDir>/example-web/node_modules",
+      "<rootDir>/example-expo/node_modules",
       "<rootDir>/lib/"
     ]
   },
