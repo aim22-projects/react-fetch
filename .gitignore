@@ -89,3 +89,5 @@ nitrogen/
 docs/.vitepress/dist
 docs/.vitepress/cache
 
+# Web Example
+example-web/dist

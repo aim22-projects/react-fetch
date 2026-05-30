@@ -82,6 +82,7 @@
     "react-native": "*"
   },
   "workspaces": [
+    ".",
     "example-web",
     "example-expo"
   ],
